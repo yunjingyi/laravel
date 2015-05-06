@@ -15,9 +15,31 @@ class HomeController extends BaseController {
 	|
 	*/
 
+    //2015-05-06  博客最小模型
+
+    public function index()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+
+        $categories = Category::all();
+
+        $data = compact('posts', 'categories');
+
+        return View::make('home.index', $data);
+    }
+
 	public function showWelcome()
 	{
-		return View::make('hello');
+        $this->test1();
 	}
+
+    protected function test1()
+    {
+        $post = Post::find(1);
+        echo $post->category->name;
+        foreach($post->comments as $comment) {
+            echo $comment->content;
+        }
+    }
 
 }

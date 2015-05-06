@@ -14,7 +14,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php'; //composer autoload 所有组件
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +24,12 @@ require __DIR__.'/../vendor/autoload.php';
 | To dramatically increase your application's performance, you may use a
 | compiled class file which contains all of the classes commonly used
 | by a request. The Artisan "optimize" is used to create this file.
-|
+| 避免autoload compiled生成所有的类
 */
 
 if (file_exists($compiled = __DIR__.'/compiled.php'))
 {
-	require $compiled;
+//	require $compiled;
 }
 
 /*
